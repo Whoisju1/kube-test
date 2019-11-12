@@ -1,0 +1,14 @@
+version: '3.7'
+services:
+  kube_test:
+    image: whoisju1/kube-test:latest
+    build: .
+    deploy:
+      replicas: 1
+      restart_policy:
+        condition: on-failure
+        max_attempts: 3
+    ports:
+    - '3000:8080'
+    environment:
+      PORT: 8080
